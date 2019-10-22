@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled from "styled-components";
+import { injectGlobal } from "styled-components";
+import { SignInPage } from "./organisms/signInPage";
+import "./reset.css";
 
-function App() {
+injectGlobal`
+  body {
+    @import url('https://fonts.googleapis.com/css?family=Notable');
+    font-family: 'Notable', sans-serif;
+  }
+`;
+
+const AppStyled = styled.div`
+  height: 100%;
+  width: 100%;
+`;
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppStyled>
+      <SignInPage />
+    </AppStyled>
   );
-}
+};
 
 export default App;
