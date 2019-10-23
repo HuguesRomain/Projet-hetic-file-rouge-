@@ -1,14 +1,29 @@
 import React from "react";
 import styled from "styled-components";
+import logo from "../assets/logo.svg";
+import FacebookLogin from "react-facebook-login";
 
 const SignInPageStyled = styled.div`
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
   align-items: center;
   min-height: 100%;
   min-width: 100%;
   background-color: #222222;
-  font-family: "Circular Std";
+  font-family: "Source Sans Pro";
+`;
+
+const TopPart = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 370px;
+`;
+
+const BottomPart = styled.div`
+  display: flex;
 `;
 
 const Logo = styled.img`
@@ -20,11 +35,14 @@ const Logo = styled.img`
 const FormSignIn = styled.form`
   display: flex;
   flex-direction: column;
-  width: 197px;
+  justify-content: space-between;
+  height: 150px;
+  width: 200px;
 `;
 
 const InputContent = styled.div`
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
 `;
 
@@ -43,17 +61,22 @@ const Input = styled.input`
 export const SignInPage = () => {
   return (
     <SignInPageStyled>
-      <Logo src="" alt="" />
-      <FormSignIn>
-        <InputContent>
-          <Label htmlFor="firstName">First name</Label>
-          <Input htmlFor="firstName" />
-        </InputContent>
-        <InputContent>
-          <Label htmlFor="lastName">Last name</Label>
-          <Input htmlFor="lastName" />
-        </InputContent>
-      </FormSignIn>
+      <TopPart>
+        <Logo src={logo} alt="" />
+        <FormSignIn>
+          <InputContent>
+            <Label htmlFor="firstName">First name</Label>
+            <Input placeholder="Jim" htmlFor="firstName" />
+          </InputContent>
+          <InputContent>
+            <Label htmlFor="lastName">Last name</Label>
+            <Input placeholder="Hawkins" htmlFor="lastName" />
+          </InputContent>
+        </FormSignIn>
+      </TopPart>
+      <BottomPart>
+        <FacebookLogin />
+      </BottomPart>
     </SignInPageStyled>
   );
 };
