@@ -1,7 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../assets/logo.svg";
 import FacebookLogin from "react-facebook-login";
+import GoogleLogin from "react-google-login";
+
+const Text = styled.p`
+  color: white;
+`;
+
+const LinkStyled = styled(Link)`
+  color: white;
+`;
 
 const SignInPageStyled = styled.div`
   display: flex;
@@ -24,6 +34,9 @@ const TopPart = styled.div`
 
 const BottomPart = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Logo = styled.img`
@@ -58,6 +71,19 @@ const Input = styled.input`
   border: 0px;
 `;
 
+const SocialNetwork = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+`;
+
+const NoAccount = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
 export const SignInPage = () => {
   return (
     <SignInPageStyled>
@@ -75,7 +101,14 @@ export const SignInPage = () => {
         </FormSignIn>
       </TopPart>
       <BottomPart>
-        <FacebookLogin />
+        <SocialNetwork>
+          <FacebookLogin />
+          <GoogleLogin />
+        </SocialNetwork>
+        <NoAccount>
+          <Text>Pas de compte ?</Text>
+          <LinkStyled href="/">Inscription</LinkStyled>
+        </NoAccount>
       </BottomPart>
     </SignInPageStyled>
   );
